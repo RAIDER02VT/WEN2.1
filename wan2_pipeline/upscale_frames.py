@@ -1,8 +1,9 @@
 import os
 import subprocess
 
-def upscale_frames(input_folder, output_folder, realsrgan_path: str="./realesrgan-ncnn-vulkan", scale: int = 4):
-    os.makedir(output_folder, exists_ok=True)
+def upscale_frames(input_folder, output_folder, realesrgan_exe="./realesrgan-ncnn-vulkan-v0.2.0-windows/realesrgan-ncnn-vulkan.exe", scale=4):
+    os.makedirs(output_folder, exist_ok=True)
+
     for filename in sorted(os.listdir(input_folder)):
         if not filename.endswith(".png"):
             continue
@@ -11,7 +12,7 @@ def upscale_frames(input_folder, output_folder, realsrgan_path: str="./realesrga
         output_path = os.path.join(output_folder, filename)
 
         result = subprocess.run([
-            realesrgan_path,
+            realesrgan_exe,
             "-i", input_path,
             "-o", output_path,
             "-n", "realesrgan-x4plus",
