@@ -1,0 +1,6 @@
+diffusers==0.27.2
+transformers>=4.25.1
+accelerate
+safetensors
+opencv-python
+torch==2.7.1+cu118 ; platform_system == "Windows"
